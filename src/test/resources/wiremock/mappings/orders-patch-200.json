@@ -1,0 +1,24 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "PATCH",
+    "urlPath": "/api/orders/ord-1001",
+    "headers": {
+      "Authorization": { "matches": "Bearer\\s+valid-token-.+" }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.status == 'SHIPPED')]" }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "ord-1001",
+      "status": "SHIPPED",
+      "productId": "SKU-123",
+      "quantity": 2,
+      "currency": "EUR"
+    }
+  }
+}

@@ -3,6 +3,8 @@ package com.mihai.api.client;
 import com.mihai.api.dto.CreateOrderRequest;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import com.mihai.api.dto.UpdateOrderStatusRequest;
+
 
 public class OrdersClient extends ApiClient {
 
@@ -36,5 +38,17 @@ public class OrdersClient extends ApiClient {
                 .get("/orders/{id}", orderId)
                 .then();
     }
+
+    public ValidatableResponse updateStatus(String token, String orderId, UpdateOrderStatusRequest request) {
+        return req()
+                .header("Authorization", "Bearer " + token)
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .patch("/orders/{id}", orderId)
+                .then();
+    }
+
+
 
 }

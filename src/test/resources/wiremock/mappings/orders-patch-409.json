@@ -1,0 +1,21 @@
+{
+  "priority": 10,
+  "request": {
+    "method": "PATCH",
+    "urlPath": "/api/orders/ord-1001",
+    "headers": {
+      "Authorization": { "matches": "Bearer\\s+valid-token-.+" }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.status == 'CREATED')]" }
+    ]
+  },
+  "response": {
+    "status": 409,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "code": "INVALID_STATUS_TRANSITION",
+      "message": "Cannot move order back to CREATED"
+    }
+  }
+}
