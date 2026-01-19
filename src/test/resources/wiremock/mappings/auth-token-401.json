@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/auth/token",
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.username == 'admin')]" },
+      { "matchesJsonPath": "$[?(@.password != 'secret')]" }
+    ]
+  },
+  "response": {
+    "status": 401,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "code": "AUTH_INVALID",
+      "message": "Invalid credentials"
+    }
+  }
+}
