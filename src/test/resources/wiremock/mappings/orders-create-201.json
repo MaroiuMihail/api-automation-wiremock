@@ -1,0 +1,27 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/orders",
+    "headers": {
+      "Authorization": { "matches": "Bearer\\s+.+"
+      }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.productId == 'SKU-123')]" },
+      { "matchesJsonPath": "$[?(@.quantity == 2)]" },
+      { "matchesJsonPath": "$[?(@.currency == 'EUR')]" }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "ord-1001",
+      "status": "CREATED",
+      "productId": "SKU-123",
+      "quantity": 2,
+      "currency": "EUR"
+    }
+  }
+}

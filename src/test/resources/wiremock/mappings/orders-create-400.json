@@ -1,0 +1,22 @@
+{
+  "priority": 2,
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/orders",
+    "headers": {
+      "Authorization": { "matches": "Bearer\\s+.+"
+      }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.quantity <= 0)]" }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "code": "VALIDATION_ERROR",
+      "message": "Quantity must be greater than 0"
+    }
+  }
+}

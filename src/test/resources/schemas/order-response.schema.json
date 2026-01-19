@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "status", "productId", "quantity", "currency"],
+  "properties": {
+    "id": { "type": "string", "minLength": 3 },
+    "status": { "type": "string" },
+    "productId": { "type": "string", "minLength": 1 },
+    "quantity": { "type": "integer", "minimum": 1 },
+    "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+  },
+  "additionalProperties": false
+}

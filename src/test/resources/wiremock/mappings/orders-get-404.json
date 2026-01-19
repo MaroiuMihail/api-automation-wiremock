@@ -1,0 +1,18 @@
+{
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/orders/.*",
+    "headers": {
+      "Authorization": { "equalTo": "Bearer valid-token-1234567890" }
+    }
+  },
+  "response": {
+    "status": 404,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "code": "ORDER_NOT_FOUND",
+      "message": "Order not found"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/orders/ord-1001",
+    "headers": {
+      "Authorization": { "equalTo": "Bearer valid-token-1234567890" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "ord-1001",
+      "status": "CREATED",
+      "productId": "SKU-123",
+      "quantity": 2,
+      "currency": "EUR"
+    }
+  }
+}
